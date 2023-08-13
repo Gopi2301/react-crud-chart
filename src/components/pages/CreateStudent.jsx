@@ -6,6 +6,7 @@ import '../../styles/pages/--createstudent.scss';
 import Button from '@mui/material/Button';
 import { API_URL } from '../../API/api_url'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 const CreateStudent = () => {
     const designation = "student"
     const [firstName, setFirstName] = useState();
@@ -13,7 +14,7 @@ const CreateStudent = () => {
     const [studentClass, setStudentClass] = useState();
     const [courses, setCourses] = useState();
     const [score, setScore] = useState();
-
+    const navigate = useNavigate()
     const postData = async () => {
         try {
             await axios.post(API_URL, {
@@ -24,7 +25,7 @@ const CreateStudent = () => {
                 courses,
                 score
             },
-                alert('Data Added SuccesFully!'))
+                alert('Student Added SuccesFully!'), navigate('/'))
         } catch (error) {
             console.log(error);
         }

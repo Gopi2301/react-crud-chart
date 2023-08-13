@@ -3,6 +3,7 @@ import Sidebar from '../sibebar/Sidebar'
 import { Button, FormControl, TextField } from '@mui/material'
 import { API_URL } from '../../API/api_url'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const CreateTeacher = () => {
     const designation = "teacher";
@@ -10,14 +11,21 @@ const CreateTeacher = () => {
     const [lastName, setLastName] = useState('');
     const [subject, setSubject] = useState('');
     const [experience, setExperience] = useState('');
+    const navigate = useNavigate()
     const postData = async () => {
-        await axios.post(API_URL, {
-            designation,
-            firstName,
-            lastName,
-            subject,
-            experience
-        })
+        try {
+            await axios.post(API_URL, {
+                designation,
+                firstName,
+                lastName,
+                subject,
+                experience
+            }, alert('Teacher Created SuccessFully'),
+                navigate('/'))
+        } catch (error) {
+            console.log(error)
+        }
+
     }
     return (
         <div>

@@ -5,6 +5,8 @@ import Dashboard from './components/pages/dashboard.jsx';
 import CreateStudent from './components/pages/CreateStudent.jsx';
 import StudentTable from './components/pages/StudentTable.jsx';
 import TeacherTable from './components/pages/TeacherTable.jsx';
+import EditPage from './components/pages/EditPage.jsx';
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -32,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: '/teacherTable',
     element: <TeacherTable />
+  },
+  {
+    path: '/editpage',
+    element: <EditPage />
   }
 ]);
 

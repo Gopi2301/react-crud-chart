@@ -1,15 +1,8 @@
   .container{
     height: 100vh;
+    position: relative;
   }
   .col{
     display: flex;
-   div:nth-child(1){
-    flex-grow: 1;
    } 
-   div:nth-child(2){
-    flex-grow:7;
-   }
-  }
-  .container{
-    position: relative;
-  }
+   
