@@ -1,0 +1,15 @@
+body .nav{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+   &__item > a{
+    color:grey
+   } 
+}
+.nav__item a{
+    text-decoration: none;
+}
+.sidebar{
+    
+    height: 100vh;
+}
