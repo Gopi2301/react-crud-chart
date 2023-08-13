@@ -5,12 +5,8 @@ const Dashboard = () => {
 
     return (
         <div className='col'>
-            <div>
-                <Sidebar />
-            </div>
-            <div>
-                <CreateStudent />
-            </div>
+            <div><Sidebar /></div>
+            <div>DashBoard</div>
         </div>
     )
 }

@@ -1,18 +1,49 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Sidebar from '../sibebar/Sidebar'
 import FormControl from '@mui/material/FormControl';
-import { FormHelperText, TextField } from '@mui/material';
+import { Alert, TextField } from '@mui/material';
+import '../../styles/pages/--createstudent.scss';
+import Button from '@mui/material/Button';
+import { API_URL } from '../../API/api_url'
+import axios from 'axios';
 const CreateStudent = () => {
+    const designation = "student"
+    const [firstName, setFirstName] = useState();
+    const [lastName, setLastName] = useState();
+    const [studentClass, setStudentClass] = useState();
+    const [courses, setCourses] = useState();
+    const [score, setScore] = useState();
+
+    const postData = async () => {
+        try {
+            await axios.post(API_URL, {
+                designation,
+                firstName,
+                lastName,
+                studentClass,
+                courses,
+                score
+            },
+                alert('Data Added SuccesFully!'))
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+    console.log(URL)
     return (
 
-        <div className='col'>
+        <div className='col container'>
             <div><Sidebar /></div>
-            <div>
-                <FormControl>
-                    <TextField required id="outlined-basic" label="Student Name" variant="outlined" />
-                    <TextField required id="outlined-basic" label="Student Class" variant="outlined" />
-                    <TextField id="outlined-basic" label="Additional Courses" variant="outlined" />
+            <div className='form'>
+                <FormControl className='form__list'>
+                    <TextField className='form__list--item' onChange={event => setFirstName(event.target.value)} required id="outlined-basic" label="Student Name" variant="outlined" />
+                    <TextField className='form__list--item' onChange={event => setLastName(event.target.value)} required id="outlined-basic" label="Last Name" variant="outlined" />
+                    <TextField className='form__list--item' onChange={event => setStudentClass(event.target.value)} required id="outlined-basic" label="Student Class ( 1 to 10)" variant="outlined" />
+                    <TextField className='form__list--item' onChange={event => setCourses(event.target.value)} id="outlined-basic" label="Additional Courses" variant="outlined" />
+                    <TextField className='form__list--item' onChange={event => setScore(event.target.value)} id="outlined-basic" label="Overall Score %" variant="outlined" />
 
+                    <Button onClick={postData} variant="contained">Create</Button>
                 </FormControl>
             </div>
         </div>
