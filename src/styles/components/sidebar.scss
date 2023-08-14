@@ -1,16 +1,59 @@
-@use '../utils/--variables';
-body .nav{
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-   &__item > a{
-    color:grey
-   } 
-}
-.nav__item a{
-    text-decoration: none;
+@use '../utils/--variables' as var;
+.logo{
+    padding-block: 1rem;
+    box-shadow: -1px 10px 8px 0px rgba(0,0,0,0.19);
+    -webkit-box-shadow: -1px 10px 8px 0px rgba(0,0,0,0.19);
+    -moz-box-shadow: -1px 10px 8px 0px rgba(0,0,0,0.19);
+    & a{
+        display: block;
+        text-align: center;
+        text-decoration: none;
+    }
 }
 .sidebar{
-
+    
+    box-shadow: 10px 10px 12px 0px rgba(0,0,0,0.23);
+-webkit-box-shadow: 10px 10px 12px 0px rgba(0,0,0,0.23);
+-moz-box-shadow: 10px 10px 12px 0px rgba(0,0,0,0.23);
     height: 100vh;
+    
+}
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+   
+& a{
+    text-decoration: none;
+    font-weight: bold;
+    &:hover{
+        background-color: var.$accent-color;
+        color:white;
+    }
+    &:active{
+        color:white;
+    }
+}
+&__item{
+    list-style-type: none;
+    padding-inline: 1rem;
+}
+}
+.menu {
+    display: none;
+}
+@media (max-width: 700px) {
+    .logo{
+        box-shadow: none;
+
+    }
+    .sidebar{
+        box-shadow: none;
+    }
+    .nav{
+        display:none;
+    }
+    .menu{
+        display: block;
+    }
 }

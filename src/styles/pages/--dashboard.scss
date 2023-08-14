@@ -1,0 +1,19 @@
+@use '../utils/--variables.scss' as var;
+.count{
+    color:#614BC3;
+    font-weight: bold;
+}
+.card{
+    position: relative;
+    text-align: center;
+    height: 100vh;
+    
+    & div{
+        position:absolute;
+        top:50%;
+        left:50%;
+        width: auto;
+        height: auto;
+        transform: translate(-50%, -50%);
+    }
+}

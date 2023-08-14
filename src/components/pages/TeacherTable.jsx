@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import Sidebar from '../sibebar/sidebar'
-import { Paper, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
+import { Grid, Paper, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
 import { API_URL } from '../../API/api_url'
 import axios from 'axios';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -35,9 +35,9 @@ const TeacherTable = () => {
         navigate('/editpage')
     }
     return (
-        <div className='col container'>
-            <div><Sidebar /></div>
-            <div className='table'>
+        <Grid container spacing={2}>
+            <Sidebar />
+            <Grid item xs={10} className='main'>
                 <TableContainer component={Paper}>
                     <TableHead>
                         <TableRow>
@@ -65,8 +65,8 @@ const TeacherTable = () => {
                         ))}
                     </TableBody>
                 </TableContainer>
-            </div>
-        </div>
+            </Grid>
+        </Grid>
     )
 }
 

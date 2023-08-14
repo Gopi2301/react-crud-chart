@@ -47,7 +47,7 @@ const EditPage = () => {
     return (
         <div className='col container'>
             <Sidebar />
-            <div className='form'>
+            <div className='main'>
 
                 {(designation === "student") ? (<FormControl className='form__list'>
                     <TextField className='form__list--item' value={firstName} onChange={event => setFirstName(event.target.value)} required id="outlined-basic" label="Student Name" variant="outlined" />

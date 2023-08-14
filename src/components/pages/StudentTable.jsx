@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import Sidebar from '../sibebar/sidebar'
 import { API_URL } from '../../API/api_url'
 import axios from 'axios';
-import { Paper, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Grid, Paper, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import '../../styles/pages/--studentTable.scss'
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from 'react-router-dom';
+import '../../styles/pages/--studenttable.scss';
 const StudentTable = () => {
     const [filterData, setFilterData] = useState([]);
     const navigate = useNavigate();
@@ -45,10 +46,10 @@ const StudentTable = () => {
 
     }
     return (
-        <div className='col container'>
-            <div><Sidebar /></div>
-            <div className='table'>
-                <TableContainer component={Paper}>
+        <Grid container spacing={2}>
+            <Sidebar />
+            <Grid item xs={10} className='main'>
+                <TableContainer className="table" component={Paper}>
                     <TableHead>
                         <TableRow>
                         </TableRow>
@@ -68,18 +69,18 @@ const StudentTable = () => {
                                 <TableCell component="th" scope="row">
                                     {row.firstName}
                                 </TableCell>
-                                <TableCell align="right">{row.lastName}</TableCell>
-                                <TableCell align="right">{row.studentClass}</TableCell>
-                                <TableCell align="right">{row.courses}</TableCell>
-                                <TableCell align="right">{row.score}</TableCell>
-                                <TableCell align="right"><DeleteIcon onClick={() => deleteStudent(row.id)} className='delete icon' /><EditIcon onClick={() => handleEdit({ row })} className='edit icon' /></TableCell>
+                                <TableCell align="center">{row.lastName}</TableCell>
+                                <TableCell align="center">{row.studentClass}</TableCell>
+                                <TableCell align="center">{row.courses}</TableCell>
+                                <TableCell align="center">{row.score}</TableCell>
+                                <TableCell align="center"><DeleteIcon onClick={() => deleteStudent(row.id)} className='delete icon' /><EditIcon onClick={() => handleEdit({ row })} className='edit icon' /></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
 
                 </TableContainer>
-            </div>
-        </div>
+            </Grid>
+        </Grid>
     )
 }
 

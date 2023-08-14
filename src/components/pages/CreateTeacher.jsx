@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Sidebar from '../sibebar/Sidebar'
-import { Button, FormControl, TextField } from '@mui/material'
+import { Button, FormControl, Grid, TextField } from '@mui/material'
 import { API_URL } from '../../API/api_url'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
@@ -28,9 +28,9 @@ const CreateTeacher = () => {
 
     }
     return (
-        <div>
-            <div><Sidebar /></div>
-            <div className='form'>
+        <Grid container spacing={2}>
+            <Sidebar />
+            <Grid item xs={10} className='main'>
                 <FormControl className='form__list'>
                     <TextField className='form__list--item' onChange={event => setFirstName(event.target.value)} required id="outlined-basic" label="Teacher Name" variant="outlined" />
                     <TextField className='form__list--item' onChange={event => setLastName(event.target.value)} required id="outlined-basic" label="Last Name" variant="outlined" />
@@ -39,8 +39,8 @@ const CreateTeacher = () => {
 
                     <Button onClick={postData} variant="contained">Create</Button>
                 </FormControl>
-            </div>
-        </div>
+            </Grid>
+        </Grid>
     )
 }
 

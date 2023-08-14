@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Sidebar from '../sibebar/Sidebar'
 import FormControl from '@mui/material/FormControl';
-import { Alert, TextField } from '@mui/material';
+import { Alert, Grid, TextField } from '@mui/material';
 import '../../styles/pages/--createstudent.scss';
 import Button from '@mui/material/Button';
 import { API_URL } from '../../API/api_url'
@@ -34,9 +34,9 @@ const CreateStudent = () => {
     console.log(URL)
     return (
 
-        <div className='col container'>
-            <div><Sidebar /></div>
-            <div className='form'>
+        <Grid container spacing={2}>
+            < Sidebar />
+            <Grid item xs={10} className='main'>
                 <FormControl className='form__list'>
                     <TextField className='form__list--item' onChange={event => setFirstName(event.target.value)} required id="outlined-basic" label="Student Name" variant="outlined" />
                     <TextField className='form__list--item' onChange={event => setLastName(event.target.value)} required id="outlined-basic" label="Last Name" variant="outlined" />
@@ -46,8 +46,8 @@ const CreateStudent = () => {
 
                     <Button onClick={postData} variant="contained">Create</Button>
                 </FormControl>
-            </div>
-        </div>
+            </Grid>
+        </Grid >
 
     )
 }
