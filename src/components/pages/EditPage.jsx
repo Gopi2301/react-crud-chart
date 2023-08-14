@@ -12,17 +12,20 @@ const EditPage = () => {
     const [lastName, setLastName] = useState('')
     const [studentClass, setStudentClass] = useState('')
     const [courses, setCourses] = useState('')
-    const [score, setScore] = useState('')
-
+    const [score, setScore] = useState('');
+    const [subject, setSubject] = useState('');
+    const [experience, setExperience] = useState('')
     const navigate = useNavigate()
     useEffect(() => {
         setId(localStorage.getItem('id'))
-        setDesignation(localStorage.getItem('designation'))
-        setFirstName(localStorage.getItem('firstName'))
-        setLastName(localStorage.getItem('lastName'))
-        setStudentClass(localStorage.getItem('studentClass'))
-        setCourses(localStorage.getItem('courses'))
-        setScore(localStorage.getItem('score'))
+        setDesignation(localStorage.getItem('designation'));
+        setFirstName(localStorage.getItem('firstName'));
+        setLastName(localStorage.getItem('lastName'));
+        setStudentClass(localStorage.getItem('studentClass'));
+        setCourses(localStorage.getItem('courses'));
+        setScore(localStorage.getItem('score'));
+        setSubject(localStorage.getItem('subject'));
+        setExperience(localStorage.getItem('experience'));
     }, [])
     const updateUser = async () => {
         try {
@@ -31,7 +34,9 @@ const EditPage = () => {
                 lastName,
                 studentClass,
                 courses,
-                score
+                score,
+                subject,
+                experience
             }, navigate('/'))
         } catch (error) {
             console.log(error);
@@ -51,14 +56,14 @@ const EditPage = () => {
                     <TextField className='form__list--item' value={courses} onChange={event => setCourses(event.target.value)} id="outlined-basic" label="Additional Courses" variant="outlined" />
                     <TextField className='form__list--item' value={score} onChange={event => setScore(event.target.value)} id="outlined-basic" label="Overall Score %" variant="outlined" />
 
-                    <Button onClick={() => updateUser()} variant="contained">Create</Button>
+                    <Button onClick={() => updateUser()} variant="contained">Update</Button>
                 </FormControl>) : (<FormControl className='form__list'>
-                    <TextField className='form__list--item' onChange={event => setFirstName(event.target.value)} required id="outlined-basic" label="Teacher Name" variant="outlined" />
-                    <TextField className='form__list--item' onChange={event => setLastName(event.target.value)} required id="outlined-basic" label="Last Name" variant="outlined" />
-                    <TextField className='form__list--item' onChange={event => setSubject(event.target.value)} required id="outlined-basic" label="Subject" variant="outlined" />
-                    <TextField className='form__list--item' onChange={event => setExperience(event.target.value)} id="outlined-basic" label="Experience" variant="outlined" />
+                    <TextField className='form__list--item' onChange={event => setFirstName(event.target.value)} value={firstName} required id="outlined-basic" label="Teacher Name" variant="outlined" />
+                    <TextField className='form__list--item' onChange={event => setLastName(event.target.value)} value={lastName} required id="outlined-basic" label="Last Name" variant="outlined" />
+                    <TextField className='form__list--item' onChange={event => setSubject(event.target.value)} value={subject} required id="outlined-basic" label="Subject" variant="outlined" />
+                    <TextField className='form__list--item' onChange={event => setExperience(event.target.value)} value={experience} id="outlined-basic" label="Experience" variant="outlined" />
 
-                    <Button variant="contained">Create</Button>
+                    <Button onClick={() => updateUser()} variant="contained">Update</Button>
                 </FormControl>)}
 
 

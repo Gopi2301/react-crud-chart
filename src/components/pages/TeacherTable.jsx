@@ -6,9 +6,12 @@ import { API_URL } from '../../API/api_url'
 import axios from 'axios';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import { useNavigate } from 'react-router-dom'
 
 const TeacherTable = () => {
-    const [filterData, setFilterData] = useState([])
+    const [filterData, setFilterData] = useState([]);
+    const navigate = useNavigate()
+
     const fetchData = async () => {
         const ApiData = await axios.get(API_URL);
 
@@ -21,14 +24,14 @@ const TeacherTable = () => {
         fetchData()
     }
     const handleEdit = ({ row }) => {
-        const designation = 'student';
+        const designation = 'teacher';
         localStorage.setItem('designation', designation)
         localStorage.setItem('id', row.id);
         localStorage.setItem('firstName', row.firstName);
         localStorage.setItem('lastName', row.lastName);
-        localStorage.setItem('studentClass', row.studentClass);
+        localStorage.setItem('subject', row.subject);
         localStorage.setItem('courses', row.courses);
-        localStorage.setItem('score', row.score);
+        localStorage.setItem('experience', row.experience);
         navigate('/editpage')
     }
     return (
@@ -57,7 +60,7 @@ const TeacherTable = () => {
                                 <TableCell align="right">{row.lastName}</TableCell>
                                 <TableCell align="right">{row.subject}</TableCell>
                                 <TableCell align="center">{row.experience}</TableCell>
-                                <TableCell align="right"><DeleteIcon onClick={() => deleteTeacher(row.id)} className='delete icon' /><EditIcon onClick={() => handleEdit(row)} className='edit icon' /></TableCell>
+                                <TableCell align="right"><DeleteIcon onClick={() => deleteTeacher(row.id)} className='delete icon' /><EditIcon onClick={() => handleEdit({ row })} className='edit icon' /></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

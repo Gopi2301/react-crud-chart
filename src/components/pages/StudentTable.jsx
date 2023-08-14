@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 const StudentTable = () => {
     const [filterData, setFilterData] = useState([]);
     const navigate = useNavigate();
+
     const ApiCall = async () => {
         try {
             const ApiData = await axios.get(API_URL);
@@ -30,6 +31,7 @@ const StudentTable = () => {
 
     }
     const handleEdit = ({ row }) => {
+
         const designation = 'student';
         localStorage.setItem('designation', designation)
         localStorage.setItem('id', row.id);
@@ -39,6 +41,8 @@ const StudentTable = () => {
         localStorage.setItem('courses', row.courses);
         localStorage.setItem('score', row.score);
         navigate('/editpage')
+
+
     }
     return (
         <div className='col container'>
