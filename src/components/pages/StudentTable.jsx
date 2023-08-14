@@ -6,8 +6,10 @@ import { Paper, TableBody, TableCell, TableContainer, TableHead, TableRow } from
 import '../../styles/pages/--studentTable.scss'
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import { useNavigate } from 'react-router-dom';
 const StudentTable = () => {
     const [filterData, setFilterData] = useState([]);
+    const navigate = useNavigate();
     const ApiCall = async () => {
         try {
             const ApiData = await axios.get(API_URL);
@@ -27,7 +29,17 @@ const StudentTable = () => {
         }
 
     }
-
+    const handleEdit = ({ row }) => {
+        const designation = 'student';
+        localStorage.setItem('designation', designation)
+        localStorage.setItem('id', row.id);
+        localStorage.setItem('firstName', row.firstName);
+        localStorage.setItem('lastName', row.lastName);
+        localStorage.setItem('studentClass', row.studentClass);
+        localStorage.setItem('courses', row.courses);
+        localStorage.setItem('score', row.score);
+        navigate('/editpage')
+    }
     return (
         <div className='col container'>
             <div><Sidebar /></div>
@@ -56,7 +68,7 @@ const StudentTable = () => {
                                 <TableCell align="right">{row.studentClass}</TableCell>
                                 <TableCell align="right">{row.courses}</TableCell>
                                 <TableCell align="right">{row.score}</TableCell>
-                                <TableCell align="right"><DeleteIcon onClick={() => deleteStudent(row.id)} className='delete icon' /><EditIcon className='edit icon' /></TableCell>
+                                <TableCell align="right"><DeleteIcon onClick={() => deleteStudent(row.id)} className='delete icon' /><EditIcon onClick={() => handleEdit({ row })} className='edit icon' /></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

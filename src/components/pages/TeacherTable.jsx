@@ -20,6 +20,17 @@ const TeacherTable = () => {
         await axios.delete(API_URL + '/' + id);
         fetchData()
     }
+    const handleEdit = ({ row }) => {
+        const designation = 'student';
+        localStorage.setItem('designation', designation)
+        localStorage.setItem('id', row.id);
+        localStorage.setItem('firstName', row.firstName);
+        localStorage.setItem('lastName', row.lastName);
+        localStorage.setItem('studentClass', row.studentClass);
+        localStorage.setItem('courses', row.courses);
+        localStorage.setItem('score', row.score);
+        navigate('/editpage')
+    }
     return (
         <div className='col container'>
             <div><Sidebar /></div>
@@ -44,10 +55,9 @@ const TeacherTable = () => {
                                     {row.firstName}
                                 </TableCell>
                                 <TableCell align="right">{row.lastName}</TableCell>
-                                <TableCell align="right">{row.studentClass}</TableCell>
                                 <TableCell align="right">{row.subject}</TableCell>
-                                <TableCell align="right">{row.experience}</TableCell>
-                                <TableCell align="right"><DeleteIcon onClick={() => deleteTeacher(row.id)} className='delete icon' /><EditIcon className='edit icon' /></TableCell>
+                                <TableCell align="center">{row.experience}</TableCell>
+                                <TableCell align="right"><DeleteIcon onClick={() => deleteTeacher(row.id)} className='delete icon' /><EditIcon onClick={() => handleEdit(row)} className='edit icon' /></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
