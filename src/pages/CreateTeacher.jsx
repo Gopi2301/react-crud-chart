@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import Sidebar from '../sibebar/Sidebar'
+import Sidebar from '../components/sibebar/Sidebar'
 import { Button, FormControl, Grid, TextField } from '@mui/material'
-import { API_URL } from '../../API/api_url'
+import { API_URL } from '../API/api_url'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
@@ -21,7 +21,7 @@ const CreateTeacher = () => {
                 subject,
                 experience
             }, alert('Teacher Created SuccessFully'),
-                navigate('/'))
+                navigate('/teachertable'))
         } catch (error) {
             console.log(error)
         }

@@ -1,8 +1,8 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import Sidebar from '../sibebar/Sidebar'
+import Sidebar from '../components/sibebar/Sidebar'
 import { Grid, Paper, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
-import { API_URL } from '../../API/api_url'
+import { API_URL } from '../API/api_url'
 import axios from 'axios';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';

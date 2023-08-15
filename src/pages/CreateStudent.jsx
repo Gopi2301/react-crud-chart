@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import Sidebar from '../sibebar/Sidebar'
+import Sidebar from '../components/sibebar/Sidebar'
 import FormControl from '@mui/material/FormControl';
 import { Alert, Grid, TextField } from '@mui/material';
-import '../../styles/pages/--createstudent.scss';
+import '../styles/pages/--createstudent.scss'
 import Button from '@mui/material/Button';
-import { API_URL } from '../../API/api_url'
+import { API_URL } from '../API/api_url'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 const CreateStudent = () => {
@@ -25,7 +25,7 @@ const CreateStudent = () => {
                 courses,
                 score
             },
-                alert('Student Added SuccesFully!'), navigate('/'))
+                alert('Student Added SuccesFully!'), navigate('/studenttable'))
         } catch (error) {
             console.log(error);
         }

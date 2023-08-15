@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Sidebar from '../sibebar/Sidebar'
+import Sidebar from '../components/sibebar/Sidebar';
 import { Button, FormControl, TextField } from '@mui/material'
 import axios from 'axios'
-import { API_URL } from '../../API/api_url'
+import { API_URL } from '../API/api_url';
 import { useNavigate } from 'react-router-dom'
 
 const EditPage = () => {

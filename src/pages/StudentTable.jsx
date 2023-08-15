@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import Sidebar from '../sibebar/Sidebar'
-import { API_URL } from '../../API/api_url'
 import axios from 'axios';
 import { Grid, Paper, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-import '../../styles/pages/--studentTable.scss'
+import '../styles/pages/--studentTable.scss'
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from 'react-router-dom';
-import '../../styles/pages/--studenttable.scss';
+
+import Sidebar from '../components/sibebar/Sidebar';
+import { API_URL } from '../API/api_url';
 const StudentTable = () => {
     const [filterData, setFilterData] = useState([]);
     const navigate = useNavigate();
