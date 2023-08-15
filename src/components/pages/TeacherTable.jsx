@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import Sidebar from '../sibebar/sidebar'
+import Sidebar from '../sibebar/Sidebar'
 import { Grid, Paper, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
 import { API_URL } from '../../API/api_url'
 import axios from 'axios';

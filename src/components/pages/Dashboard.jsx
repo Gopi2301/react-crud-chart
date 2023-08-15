@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../../styles/pages/--dashboard.scss'
 import { Card, Grid, Typography } from '@mui/material'
 import { API_URL } from '../../API/api_url'
-import Sidebar from '../sibebar/sidebar'
+import Sidebar from '../sibebar/Sidebar'
 import axios from 'axios'
 const Dashboard = () => {
     const [data, setData] = useState([])
