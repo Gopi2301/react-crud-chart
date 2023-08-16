@@ -15,7 +15,7 @@ const CreateStudent = () => {
     const validationSchema = yup.object({
         firstName: yup.string().required(),
         lastName: yup.string().required(),
-        studentClass: yup.number().min(1).max(10).required('Must be Number 1 to 10'),
+        studentClass: yup.number('Must be Number 1 to 10').min(1).max(10).required(),
         courses: yup.string(),
         score: yup.number().min(1).max(99).required()
     })
@@ -26,12 +26,14 @@ const CreateStudent = () => {
         courses: '',
         score: ''
     }
+    const onSubmit = (values) =>
+        postData(values);
 
-    const onSubmit = (values) => postData(values);
     const formik = useFormik({
         initialValues, onSubmit, validationSchema
     })
-    console.log(formik.errors);
+
+
 
 
     async function postData(values) {
